@@ -140,9 +140,10 @@ class FirstPageState extends State<FirstPage> with AutomaticKeepAliveClientMixin
 
 Widget _buildAnimationLineWidget() {
   return Container(
+    height: 42,
     margin: const EdgeInsets.all(5),
     decoration: new BoxDecoration(
-      borderRadius: BorderRadius.circular(3),
+      borderRadius: BorderRadius.circular(21),
       color: Colors.white,
     ),
     child: AnimationHeadlinesWidget(),

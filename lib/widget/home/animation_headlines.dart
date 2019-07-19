@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:app_model/widget/home/animation_text.dart';
+import 'package:app_model/common/screen_util.dart';
 
 List headlines = [
   'MT大白洗碗机测评：用了就再也回不去了',
@@ -25,10 +26,12 @@ class _AnimationHeadlinesWidgetState extends State<AnimationHeadlinesWidget> {
     super.initState();
 
     Timer _countdownTimer = new Timer.periodic(new Duration(seconds: 3), (timer) {
-//      print('countdownTimer.tick');
       if(mounted){
         setState(() {
           _diffScaleNext++;
+          if (_diffScaleNext >= headlines.length) {
+            _diffScaleNext = 0;
+          }
         });
       }
     });
@@ -49,48 +52,29 @@ class _AnimationHeadlinesWidgetState extends State<AnimationHeadlinesWidget> {
         ),
         Container(
 //                color: bgColor,
-          child: DiffScaleText(
-            text: headlines[_diffScaleNext % headlines.length],
-            textStyle: TextStyle(fontSize: 12, color: Colors.black),
-          ),
-          height: 30,
-          alignment: Alignment.centerLeft,
-          width: 40,
+          height: 20,
+          width: ScreenUtil.screenWidth - 130,
+          child: new Text(headlines[_diffScaleNext]),
         ),
         SizedBox(
           width: 8,
         ),
         Container(
-//          width: 60,
-//          alignment: Alignment.bottomRight,
           child: GestureDetector(
             onTap: (){
 
             },
             child: Container(
               width: 60,
-              padding: EdgeInsets.only(left: 14),
+              padding: EdgeInsets.only(left: 16),
               decoration: BoxDecoration(
-                border: Border(left: BorderSide(color: Color(0xFFedeeed), width: 1)),
+                border: Border(left: BorderSide(color: Color(0xFFD6D6D6), width: 1)),
               ),
               child: new Text('更多', style: new TextStyle(fontSize: 14)),
             ),
           ),
         ),
-//        GestureDetector(
-//          onTap: (){
-//
-//          },
-//          child: Container(
-//            padding: EdgeInsets.only(left: 14),
-//            decoration: BoxDecoration(
-//              border: Border(left: BorderSide(color: Color(0xFFedeeed), width: 1)),
-//            ),
-//            child: new Text('更多', style: new TextStyle(fontSize: 14)),
-//          ),
-//        ),
       ],
-//          mainAxisAlignment: MainAxisAlignment.spaceBetween,
     );
   }
 }
