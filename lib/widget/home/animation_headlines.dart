@@ -39,59 +39,58 @@ class _AnimationHeadlinesWidgetState extends State<AnimationHeadlinesWidget> {
   Widget build(BuildContext context) {
 
     return Row(
-      mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-      SizedBox(
-        width: 8,
-      ),
-      Image.asset('images/ic_home_new.png',width: 30.0,height: 30.0),
-      SizedBox(
-        width: 8,
-      ),
-      Container(
-//              color: bgColor,
-        child: DiffScaleText(
-          text: headlines[_diffScaleNext % headlines.length],
-          textStyle: TextStyle(fontSize: 12, color: Colors.black),
+        SizedBox(
+          width: 8,
         ),
-        height: 30,
-        alignment: Alignment.centerLeft,
-        width: 40,
-      ),
-      SizedBox(
-        width: 8,
-      ),
-      Container(
-//        width: 60,
-//        alignment: Alignment.bottomRight,
-        child: GestureDetector(
-          onTap: (){
+        Image.asset('images/ic_home_new.png',width: 30.0,height: 30.0),
+        SizedBox(
+          width: 8,
+        ),
+        Container(
+//                color: bgColor,
+          child: DiffScaleText(
+            text: headlines[_diffScaleNext % headlines.length],
+            textStyle: TextStyle(fontSize: 12, color: Colors.black),
+          ),
+          height: 30,
+          alignment: Alignment.centerLeft,
+          width: 40,
+        ),
+        SizedBox(
+          width: 8,
+        ),
+        Container(
+//          width: 60,
+//          alignment: Alignment.bottomRight,
+          child: GestureDetector(
+            onTap: (){
 
-          },
-          child: Container(
-            width: 60,
-            padding: EdgeInsets.only(left: 14),
-            decoration: BoxDecoration(
-              border: Border(left: BorderSide(color: Color(0xFFedeeed), width: 1)),
+            },
+            child: Container(
+              width: 60,
+              padding: EdgeInsets.only(left: 14),
+              decoration: BoxDecoration(
+                border: Border(left: BorderSide(color: Color(0xFFedeeed), width: 1)),
+              ),
+              child: new Text('更多', style: new TextStyle(fontSize: 14)),
             ),
-            child: new Text('更多', style: new TextStyle(fontSize: 14)),
           ),
         ),
-      ),
-//      GestureDetector(
-//        onTap: (){
+//        GestureDetector(
+//          onTap: (){
 //
-//        },
-//        child: Container(
-//          padding: EdgeInsets.only(left: 14),
-//          decoration: BoxDecoration(
-//            border: Border(left: BorderSide(color: Color(0xFFedeeed), width: 1)),
+//          },
+//          child: Container(
+//            padding: EdgeInsets.only(left: 14),
+//            decoration: BoxDecoration(
+//              border: Border(left: BorderSide(color: Color(0xFFedeeed), width: 1)),
+//            ),
+//            child: new Text('更多', style: new TextStyle(fontSize: 14)),
 //          ),
-//          child: new Text('更多', style: new TextStyle(fontSize: 14)),
 //        ),
-//      ),
-    ],
-//        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      ],
+//          mainAxisAlignment: MainAxisAlignment.spaceBetween,
     );
   }
 }
