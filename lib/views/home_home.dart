@@ -73,7 +73,10 @@ class FirstPageState extends State<FirstPage> with TickerProviderStateMixin, Aut
 
   Widget _tabBarSel() {
     return Container(
-      color: Colors.white,
+      decoration: new BoxDecoration(
+        color: Colors.white,
+        border: Border(bottom: BorderSide(color: Color.fromRGBO(214, 214, 214, 1.0), width: 1))
+      ),
       child: TabBar(
           controller: _controller,
           indicatorColor: MyColors.themeColor,
