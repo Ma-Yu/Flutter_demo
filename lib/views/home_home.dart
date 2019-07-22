@@ -17,7 +17,6 @@ class FirstPageState extends State<FirstPage> with TickerProviderStateMixin, Aut
   @override
   bool get wantKeepAlive => true;
   List<HomeBtnItem> HomeBtnItems;
-  List _tabTitles = ['热门', '资讯', '电子'];
   Size _sizeRed;
 
   TabController _controller;
@@ -72,6 +71,26 @@ class FirstPageState extends State<FirstPage> with TickerProviderStateMixin, Aut
     _controller.dispose();
   }
 
+  Widget _tabBarSel() {
+    return Container(
+      color: Colors.white,
+      child: TabBar(
+          controller: _controller,
+          indicatorColor: MyColors.themeColor,
+          indicatorSize: TabBarIndicatorSize.label,
+          labelColor: MyColors.themeColor,
+          labelPadding: EdgeInsets.all(0),
+          unselectedLabelColor: Colors.black,
+          tabs:[
+            _tabBarItem('热门'),
+            _tabBarItem('资讯'),
+            _tabBarItem('电子', showRightImage: false),
+          ]
+      ),
+
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
 //    super.build(context);
@@ -84,44 +103,36 @@ class FirstPageState extends State<FirstPage> with TickerProviderStateMixin, Aut
       ],
     );
 
+    double statusBarHeight = MediaQuery.of(context).padding.top;
+    double _swiperHeight = 200 + 10.0;
+    double _btnListHeight = 120;
+    double _hotLineHeight = 60;
+    double _appBarHeight =
+        _swiperHeight + _btnListHeight + _hotLineHeight - kToolbarHeight - statusBarHeight;
+
     var body = NestedScrollView(
       controller: _scrollViewController,
       headerSliverBuilder: (BuildContext context, bool boxIsScrolled) {
         return <Widget>[
-          SliverAppBar(
-            pinned: true,
-            floating: true,
-            forceElevated: boxIsScrolled,
-            backgroundColor: MyColors.mainBgColor,
-            flexibleSpace: FlexibleSpaceBar(
-              collapseMode: CollapseMode.pin,
-              background: Column(
-//                  key: _keyFilter,
-                crossAxisAlignment: CrossAxisAlignment.start,
+          SliverOverlapAbsorber(
+            handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+            child: SliverAppBar(
+              forceElevated: boxIsScrolled,
+              backgroundColor: MyColors.mainBgColor,
+//              expandedHeight: (_sizeRed == null ? 360 : _sizeRed.height) + 50.0,
+              bottom: PreferredSize(
+                child: Container(),
+                preferredSize: Size.fromHeight(_appBarHeight)
+              ),
+              flexibleSpace: Column(
                 children: <Widget>[views],
               ),
+            )
+          ),
+            SliverPersistentHeader(
+              delegate: _SliverAppBarDelegate(_tabBarSel()),
+              pinned: true,
             ),
-            expandedHeight: (_sizeRed == null ? 360 : _sizeRed.height) + 50.0,
-            bottom: PreferredSize(
-              preferredSize: Size(double.infinity, ScreenUtil.screenWidth / 3),
-              child: Container(
-                color: Colors.white,
-                child: TabBar(
-                    controller: _controller,
-                    indicatorColor: MyColors.themeColor,
-                    indicatorSize: TabBarIndicatorSize.label,
-                    labelColor: MyColors.themeColor,
-                    labelPadding: EdgeInsets.all(0),
-                    unselectedLabelColor: Colors.black,
-                    tabs:[
-                      _tabBarItem('热门'),
-                      _tabBarItem('资讯'),
-                      _tabBarItem('电子', showRightImage: false),
-                    ]
-                ),
-              )
-            ),
-          )
         ];
       },
       body: TabBarView(controller: _controller, children: [
@@ -247,5 +258,26 @@ class FirstPageState extends State<FirstPage> with TickerProviderStateMixin, Aut
           ],
         ));
   }
+}
 
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverAppBarDelegate(this._tabBar);
+
+  final Container _tabBar;
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return _tabBar;
+  }
+
+  @override
+  double get maxExtent => 44;
+
+  @override
+  double get minExtent => 44;
+
+  @override
+  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
+    return true;
+  }
 }

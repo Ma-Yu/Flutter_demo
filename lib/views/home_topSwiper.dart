@@ -40,8 +40,6 @@ class SwiperPageState extends State<SwiperPage> {
     return CachedNetworkImage(
       fit: BoxFit.fill,
       imageUrl: "https://aecpm.alicdn.com/simba/img/TB14ab1KpXXXXclXFXXSutbFXXX.jpg_q50.jpg",
-//      fadeOutDuration: const Duration(milliseconds: 300),
-//      fadeInDuration: const Duration(milliseconds: 700),
       errorWidget: (context, url, error) => new Icon(Icons.error),
     );
   }
