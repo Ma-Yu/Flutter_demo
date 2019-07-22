@@ -110,8 +110,14 @@ class FirstPageState extends State<FirstPage> with TickerProviderStateMixin, Aut
     double _swiperHeight = 200 + 10.0;
     double _btnListHeight = 120;
     double _hotLineHeight = 60;
+    double _statusH;
+    if (statusBarHeight == 20) {
+      _statusH = statusBarHeight;
+    } else {
+      _statusH = statusBarHeight-20;
+    }
     double _appBarHeight =
-        _swiperHeight + _btnListHeight + _hotLineHeight - kToolbarHeight - statusBarHeight;
+        _swiperHeight + _btnListHeight + _hotLineHeight - kToolbarHeight - _statusH;
 
     var body = NestedScrollView(
       controller: _scrollViewController,
