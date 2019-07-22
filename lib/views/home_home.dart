@@ -104,40 +104,22 @@ class FirstPageState extends State<FirstPage> with TickerProviderStateMixin, Aut
             expandedHeight: (_sizeRed == null ? 360 : _sizeRed.height) + 50.0,
             bottom: PreferredSize(
               preferredSize: Size(double.infinity, ScreenUtil.screenWidth / 3),
-              child: TabBar(
-                  controller: _controller,
-                  indicatorColor: Colors.transparent,
-                  indicatorSize: TabBarIndicatorSize.label,
-                  tabs: _tabTitles.map((i) => Container(
-                    padding: const EdgeInsets.all(0),
-                    height: 44.0,
-                    child: new Tab(
-                      child: Row(
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              SizedBox(
-                                height: 3,
-                              ),
-                              Text(i),
-                              SizedBox(
-                                height: 3,
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            width: 1,
-                            height: 30,
-                            color: Color(0xFFc9c9ca),
-                          )
-                        ],
-                      ),
-                    ),
-                  )).toList()
-                )
+              child: Container(
+                color: Colors.white,
+                child: TabBar(
+                    controller: _controller,
+                    indicatorColor: MyColors.themeColor,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    labelColor: MyColors.themeColor,
+                    labelPadding: EdgeInsets.all(0),
+                    unselectedLabelColor: Colors.black,
+                    tabs:[
+                      _tabBarItem('热门'),
+                      _tabBarItem('资讯'),
+                      _tabBarItem('电子', showRightImage: false),
+                    ]
+                ),
+              )
             ),
           )
         ];
@@ -246,4 +228,24 @@ class FirstPageState extends State<FirstPage> with TickerProviderStateMixin, Aut
           return Container(color: Colors.white, child: ListTile(title: Text("$s第$index 个条目")));
         });
   }
+
+  Widget _tabBarItem(String title, {bool showRightImage = true}) {
+    return Tab(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: Center(
+                child: Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal)),
+              ),
+            ),
+
+            ///分割符自定义，可以放任何widget
+            showRightImage
+                ? Text('|', style: TextStyle(color: Color(0xffd0d0d0), fontSize: 23, fontWeight: FontWeight.normal))
+                : Text(' ', style: TextStyle(color: Color(0xffd0d0d0), fontSize: 23))
+          ],
+        ));
+  }
+
 }
