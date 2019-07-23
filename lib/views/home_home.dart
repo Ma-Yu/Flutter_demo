@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_model/views/home_topSwiper.dart';
+import 'package:app_model/widget/home/home_topSwiper.dart';
 import 'package:app_model/model/home/home_button_items.dart';
 import 'package:app_model/common/screen_util.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
