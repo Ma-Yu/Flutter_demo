@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_model/views/home_home.dart';
 import 'package:app_model/common/screen_util.dart';
+import 'package:app_model/views/home_me.dart';
 
 const int ThemeColor = 0xFF597EF7;
 
@@ -39,7 +40,7 @@ class _MyHomePageState extends State<AppPage>
     _list
       ..add(FirstPage())
       ..add(FirstPage())
-      ..add(FirstPage());
+      ..add(MyPage());
   }
 
   @override

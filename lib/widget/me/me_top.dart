@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:app_model/common/screen_util.dart';
+import 'package:app_model/common/my_constants.dart';
 
 class TopItem extends StatelessWidget {
 
   final int productNum;
   final Widget contentWidget;
-  double _topBarHeight = 48;
+  double _topBarHeight = 90;
   BuildContext _context;
 
   static Gradient primaryGradient = const LinearGradient(colors: [Colors.blue, Colors.blueAccent]);
@@ -19,130 +20,166 @@ class TopItem extends StatelessWidget {
     return Container(
         child: Stack(children: <Widget>[
           Container(
-            child: Container(
-              decoration: new BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("images/my_bj.png"),
-                  fit: BoxFit.cover,
-                ),
+            decoration: new BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("images/my_bj.png"),
+                fit: BoxFit.cover,
               ),
-//                color: Theme.of(context).primaryColor,
-              width: ScreenUtil.screenWidth,
-              height: ScreenUtil.screenHeight / 4,
             ),
+            width: ScreenUtil.screenWidth,
+            height: 282,
           ),
           Opacity(
             opacity: 1,
-            child: Container(
-//              height: _topBarHeight,
-              margin: EdgeInsets.only(top: ScreenUtil.statusBarHeight + 20),
-//          color: Colors.red,
-              child: Column(
-                children: <Widget>[
-                  Opacity(
-                    opacity: 1,
-                    child: _buildTopBar(),
-                  ),
-
-                  Stack(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 20,
+                  margin: EdgeInsets.only(top: ScreenUtil.statusBarHeight + 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Container(
-                        height: 20,
-                        decoration: BoxDecoration(gradient: primaryGradient),
-                      ),
-                      Container(
-//                    decoration: BoxDecoration(gradient: GZXColors.primaryGradient),
+                      GestureDetector(
+                        onTap: () async {
 
-//            color: Colors.red,
-                          padding: EdgeInsets.all(4),
-//              padding: EdgeInsets.only(top: 20,bottom: 20),
-                          alignment: Alignment.center,
-                          child: Card(
-                            elevation: 0,
-                            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12.0))),
-                            //设置圆角
-                            child: Container(
-                              padding: EdgeInsets.all(10),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Image.asset(
-                                    'static/images/88vip.png',
-                                    height: 40,
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.only(left: 14),
-                                    decoration: BoxDecoration(
-                                      border: Border(left: BorderSide(color: Color(0xFFedeeed), width: 1)),
-//                              color: Colors.red,
-                                    ),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              '兑天猫超市5元代金券',
-                                              style: TextStyle(color: Color(0xFF666666)),
-                                            ),
-                                            SizedBox(
-                                              height: 4,
-                                            ),
-                                            Text(
-                                              '会员专享 每周可兑',
-                                              style: TextStyle(color: Color(0xFF666666), fontSize: 12),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Image.asset(
-                                    'static/images/card.png',
-                                    height: 44,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ))
+                        },
+                        child: Icon(
+                          Icons.settings,
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      )
                     ],
-                  )
-                ],
-              ),
+                  ),
+                ),
+                Container(
+                    height: _topBarHeight,
+                    margin: EdgeInsets.only(top: 20),
+                    child: _buildTopBar()
+                ),
+                SizedBox(
+                  height: 300,
+                )
+              ],
             ),
           ),
           Positioned(
-              top: _topBarHeight + ScreenUtil.statusBarHeight + 30,
-              height: 367,
-              width: ScreenUtil.screenWidth,
-              child: Container())
+            top: 282,
+            width: ScreenUtil.screenHeight,
+            height: 150,
+            child: Container(
+              width: ScreenUtil.screenHeight,
+              height: 150,
+              color: MyColors.mainBgColor,
+            ),
+          ),
+          Positioned(
+            top: _topBarHeight + ScreenUtil.statusBarHeight + 100,
+            width: ScreenUtil.screenWidth,
+            height: 180,
+            child: Container(
+              margin: EdgeInsets.all(4),
+              alignment: Alignment.center,
+              child: Card(
+                elevation: 2,
+                color: Colors.white,
+                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0))), //设置圆角
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        SizedBox(
+                          width: 5,
+                        ),
+                        _underDigitalTextOn('总余额（元）', '￥0.00'),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            GestureDetector(
+                              onTap: () async {
+
+                              },
+                              child: Icon(
+                                Icons.settings,
+                                color: Color(0xFF4A4A4A),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    Container(
+                      height: 1,
+                      color: Color(0xFFD8D8D8),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        SizedBox(
+                          width: 5,
+                        ),
+                        _underDigitalTextOn('游戏金额（元）', '￥0.00'),
+                        Container(
+                          height: 50,
+                          width: 1,
+                          margin: EdgeInsets.only(top: 12, bottom: 12),
+                          color: Color(0xFFD8D8D8),
+                        ),
+                        _underDigitalTextOn('本地金额（元）', '￥0.00'),
+                        SizedBox(
+                          width: 5,
+                        ),
+                      ],
+                    )
+                  ],
+                )
+              ),
+            ),
+          ),
         ]));
   }
 
   Widget _underDigitalTextOn(count, text) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
+//      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
+        SizedBox(
+          height: 12,
+        ),
         Container(
-//          color: Colors.blue,
           child: Text(
             '$count',
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xFF4A4A4A),
+              fontSize: 16
             ),
           ),
         ),
         SizedBox(
-          height: 10,
+          height: 8,
         ),
         Container(
-//          color: Colors.blue,
           child: Text(
             text,
-            style: TextStyle(color: Colors.white, fontSize: 13),
+            style: TextStyle(color: Color(0xFF4A4A4A), fontSize: 16),
           ),
-        )
+        ),
+        SizedBox(
+          height: 12,
+        ),
       ],
     );
   }
@@ -210,49 +247,42 @@ class TopItem extends StatelessWidget {
           width: 8,
         ),
         Container(
-          width: 60,
-          height: 60,
+          width: 90,
+          height: 90,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              border: Border.all(color: Colors.white, width: 1),
+              borderRadius: BorderRadius.all(Radius.circular(45)),
+              border: Border.all(color: Colors.white, width: 4),
               image: DecorationImage(
                   image: Image.asset(
                     'images/default_nor_avatar.png',
                     fit: BoxFit.fill,
                   ).image)),
-//          child: Image.asset(GZXIcons.huangjiaju, fit: BoxFit.fill,),
         ),
         SizedBox(
           width: 8,
         ),
         Container(
-//          color: Colors.blue,
-          height: 60,
+          height: 90,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+            SizedBox(
+              width: 8,
+            ),
               Text(
                 '账号：' + '12345678',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal, color: Colors.white),
               ),
               Text(
                 '推荐码：' + '6688',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal, color: Colors.white),
               ),
+              SizedBox(
+                width: 8,
+              )
             ],
-          ),
-        ),
-        Expanded(
-          child: GestureDetector(
-            onTap: () async {
-
-            },
-            child: Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
           ),
         ),
         SizedBox(
