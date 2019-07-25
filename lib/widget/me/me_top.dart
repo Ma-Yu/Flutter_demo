@@ -17,6 +17,12 @@ class TopItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _context = context;
+    double _statusH;
+    if (ScreenUtil.statusBarHeight == 20) {
+      _statusH = ScreenUtil.statusBarHeight + 20;
+    } else {
+      _statusH = ScreenUtil.statusBarHeight;
+    };
     return Container(
         child: Stack(children: <Widget>[
           Container(
@@ -34,7 +40,7 @@ class TopItem extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(top: ScreenUtil.statusBarHeight + 15),
+                  margin: EdgeInsets.only(top: 35),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
@@ -62,23 +68,23 @@ class TopItem extends StatelessWidget {
                     child: _buildTopBar()
                 ),
                 SizedBox(
-                  height: 220,
+                  height: 240 - _statusH,
                 )
               ],
             ),
           ),
           Positioned(
             top: 282,
-            width: ScreenUtil.screenHeight,
+            width: ScreenUtil.screenWidth,
             height: 150,
             child: Container(
-              width: ScreenUtil.screenHeight,
+              width: ScreenUtil.screenWidth,
               height: 150,
               color: MyColors.mainBgColor,
             ),
           ),
           Positioned(
-            top: _topBarHeight + ScreenUtil.statusBarHeight + 100,
+            top: _topBarHeight + 120,
             width: ScreenUtil.screenWidth,
             height: 180,
             child: Container(
