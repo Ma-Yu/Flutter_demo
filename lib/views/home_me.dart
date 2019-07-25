@@ -15,6 +15,17 @@ class _MyPageState extends State<MyPage>
   static const Color _backgroundColor = Color(0xFFf3f3f3);
   Gradient _mainGradient = const LinearGradient(colors: [_backgroundColor, _backgroundColor]);
 
+  static List listData = [
+    {'text': '手机验证码', 'icon': 'images/ic_my_Phoneverification.png'},
+    {'text': '我的任务', 'icon': 'images/ic_my_Mytask.png'},
+    {'text': '推荐好友', 'icon': 'images/ic_my_recommended.png'},
+    {'text': '银行资料', 'icon': 'images/ic_bank_bankinformation.png'},
+    {'text': '交易记录', 'icon': 'images/ic_my_Transactionrecords.png'},
+    {'text': '版本更新', 'icon': 'images/ic_my_update.png'},
+    {'text': '清除缓存', 'icon': 'images/ic_my_garbage.png'},
+    {'text': '账户设置', 'icon': 'images/ic_my_account.png'},
+  ];
+
   @override
   bool get wantKeepAlive => true;
 
@@ -87,7 +98,7 @@ class _MyPageState extends State<MyPage>
       },
 
       ///根据状态返回数量
-      itemCount: 2,
+      itemCount: listData.length + 3,
 
       ///滑动监听
       controller: _scrollViewController,
@@ -106,6 +117,26 @@ class _MyPageState extends State<MyPage>
         color: MyColors.mainBgColor,
         child: _buildMidButtonWidget(),
       );
+    } else if(index == 2) {
+      return Container(
+        color: MyColors.mainBgColor,
+        width: ScreenUtil.screenWidth,
+        margin: EdgeInsets.only(left: 12,top: 0, bottom: 0),
+        child: Text(
+            '我的资料',
+            style: TextStyle(
+                fontSize: 14.0,
+                height: 1.5,
+                decoration: TextDecoration.none,
+                color: Color(0xFF5A7CFF))
+        ),
+      );
+    } else {
+      return Container(
+        color: MyColors.mainBgColor,
+        width: ScreenUtil.screenWidth,
+        child: _buildListViewWidget(index, index == 5 || index == 7 || index == 10),
+      );
     }
   }
 
@@ -116,7 +147,6 @@ class _MyPageState extends State<MyPage>
         borderRadius: BorderRadius.circular(3),
         color: Colors.white,
       ),
-//      height: 175,
       height: ScreenUtil().L(100) + 20,
       width: MediaQuery.of(context).size.width,
       child: Row(
@@ -183,6 +213,79 @@ class _MyPageState extends State<MyPage>
           )
         ],
       ),
+    );
+  }
+
+  Widget _buildListViewWidget(int index, bool needBottom) {
+    final double verifyOpacity = (index == 3) ? 1 : 0;
+
+    return Container(
+      margin: const EdgeInsets.only(left: 6, right: 6),
+      decoration: new BoxDecoration(
+        color: Colors.white,
+      ),
+//      height: ScreenUtil().L(42),
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        children: <Widget>[
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              SizedBox(
+                width: 8,
+              ),
+              Container(
+                child: Row(
+//                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Image.asset(listData[index - 3]['icon'],height: 22, width: 22),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(listData[index-3]['text'], style: TextStyle(fontSize: 14, color: Color(0xFF4A4A4A))),
+                  ],
+                ),
+              ),
+
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Opacity(
+                      opacity: verifyOpacity,
+                      child: Image.asset('images/ic_my_Novalidation.png',height: 18, width: 50),
+                    ),
+                    Image.asset('images/ic_wy_next.png',height: 15, width: 15),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: 8,
+              )
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          needBottom ? Container(
+            height: 8,
+            color: MyColors.mainBgColor,
+          ) : Container(
+            height: 1,
+            color: Color(0xFFD8D8D8),
+          ),
+        ],
+      )
     );
   }
 }
