@@ -34,20 +34,22 @@ class TopItem extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Container(
-                  height: 20,
                   margin: EdgeInsets.only(top: ScreenUtil.statusBarHeight + 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      GestureDetector(
-                        onTap: () async {
-
-                        },
-                        child: Icon(
-                          Icons.settings,
-                          color: Colors.white,
+                      Material(
+                        color:Colors.transparent,
+                        child: IconButton(
+                            color: Colors.white,
+                            highlightColor: Colors.black12,
+                            icon: ImageIcon(AssetImage('images/ic_my_message.png')),
+                            onPressed: (){
+                              print('点击事件');
+                            }
                         ),
                       ),
+
                       SizedBox(
                         width: 10,
                       )
@@ -107,10 +109,7 @@ class TopItem extends StatelessWidget {
                               onTap: () async {
 
                               },
-                              child: Icon(
-                                Icons.settings,
-                                color: Color(0xFF4A4A4A),
-                              ),
+                              child: Image.asset('images/ic_my_refresh.png',height: 25, width: 25),
                             ),
                             SizedBox(
                               width: 10,
