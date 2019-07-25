@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:app_model/widget/pull_load/ListState.dart';
 import 'package:app_model/common/my_constants.dart';
 import 'package:app_model/widget/me/me_top.dart';
+import 'package:app_model/common/screen_util.dart';
 
 class MyPage extends StatefulWidget {
   @override
@@ -61,7 +62,7 @@ class _MyPageState extends State<MyPage>
         child: NotificationListener<ScrollNotification>(
           onNotification: _onScroll,
           child: Scrollbar(
-              child: _buildListView()
+            child: _buildListView(),
           ),
         ),
         context: context,
@@ -86,7 +87,7 @@ class _MyPageState extends State<MyPage>
       },
 
       ///根据状态返回数量
-      itemCount: 1,
+      itemCount: 2,
 
       ///滑动监听
       controller: _scrollViewController,
@@ -100,5 +101,88 @@ class _MyPageState extends State<MyPage>
         child: TopItem(),
       );
     }
+    if(index == 1) {
+      return Container(
+        color: MyColors.mainBgColor,
+        child: _buildMidButtonWidget(),
+      );
+    }
+  }
+
+  Widget _buildMidButtonWidget() {
+    return Container(
+      margin: const EdgeInsets.all(6),
+      decoration: new BoxDecoration(
+        borderRadius: BorderRadius.circular(3),
+        color: Colors.white,
+      ),
+//      height: 175,
+      height: ScreenUtil().L(100) + 20,
+      width: MediaQuery.of(context).size.width,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Container(
+            width: 60,
+            child: GestureDetector(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset('images/ic_my_topup.png',height: 60, width: 60),
+                  Text(
+                    '快捷充值',
+                    style: TextStyle(
+                        fontSize: 15.0,
+                        height: 1.5,
+                        decoration: TextDecoration.none,
+                        color: Color(0xFF5A7CFF))
+                  )
+                ],
+              ),
+            ),
+          ),
+          Container(
+            width: 60,
+            child: GestureDetector(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset('images/ic_my_topup.png',height: 60, width: 60),
+                  Text(
+                      '申请提现',
+                      style: TextStyle(
+                          fontSize: 15.0,
+                          height: 1.5,
+                          decoration: TextDecoration.none,
+                          color: Color(0xFF5A7CFF))
+                  )
+                ],
+              ),
+            ),
+          ),
+          Container(
+            width: 60,
+            child: GestureDetector(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset('images/ic_my_topup.png',height: 60, width: 60),
+                  Text(
+                      '文案文案',
+                      style: TextStyle(
+                          fontSize: 15.0,
+                          height: 1.5,
+                          decoration: TextDecoration.none,
+                          color: Color(0xFF5A7CFF))
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

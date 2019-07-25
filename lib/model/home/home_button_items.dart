@@ -2,27 +2,27 @@ var menueDataJson = {
   "config": {"color": "#555666", "pic_url": ""},
   "items": [
     {
-      "jump_url": "",
+      "jump_url": "11111",
       "pic_url": "https://gw.alicdn.com/tps/TB1eXc7PFXXXXb4XpXXXXXXXXXX-183-144.png?getAvatar=1_.webp",
       "title": "标题"
     },
     {
-      "jump_url": "",
+      "jump_url": "22222",
       "pic_url": "https://gw.alicdn.com/tps/TB1eXc7PFXXXXb4XpXXXXXXXXXX-183-144.png?getAvatar=1_.webp",
       "title": "标题"
     },
     {
-      "jump_url": "",
+      "jump_url": "33333",
       "pic_url": "https://gw.alicdn.com/tps/TB1eXc7PFXXXXb4XpXXXXXXXXXX-183-144.png?getAvatar=1_.webp",
       "title": "标题"
     },
     {
-      "jump_url": "",
+      "jump_url": "44444",
       "pic_url": "https://gw.alicdn.com/tps/TB1eXc7PFXXXXb4XpXXXXXXXXXX-183-144.png?getAvatar=1_.webp",
       "title": "标题"
     },
     {
-      "jump_url": "",
+      "jump_url": "55555",
       "pic_url": "https://gw.alicdn.com/tps/TB1eXc7PFXXXXb4XpXXXXXXXXXX-183-144.png?getAvatar=1_.webp",
       "title": "标题"
     },

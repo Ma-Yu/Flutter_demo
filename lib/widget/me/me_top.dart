@@ -60,7 +60,7 @@ class TopItem extends StatelessWidget {
                     child: _buildTopBar()
                 ),
                 SizedBox(
-                  height: 300,
+                  height: 220,
                 )
               ],
             ),
@@ -181,61 +181,6 @@ class TopItem extends StatelessWidget {
           height: 12,
         ),
       ],
-    );
-  }
-
-  Widget _circleButton(Color imageBackgroundColor, IconData iconData, text, int unreadMessages) {
-    return Container(
-//      color: Colors.red,
-      width: 50,
-      child: GestureDetector(
-        child: Stack(
-          children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-//        mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                CircleAvatar(
-                  backgroundColor: imageBackgroundColor,
-                  radius: 22,
-                  child: Icon(
-                    iconData,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-                Text(
-                  text,
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Color(0xFF6a6a6a),
-                  ),
-                )
-              ],
-            ),
-            Positioned(
-              top: 10,
-              right: 0,
-              child: Container(
-//                width: 18.0,
-//                height: 18.0,
-                alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(vertical: 2, horizontal: 5),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white, width: 1),
-                    borderRadius: BorderRadius.circular(20 / 2.0),
-                    color: Color(0xffff3e3e)),
-                child: Text(
-                  '${unreadMessages}',
-                  style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold, color: Color(0xffffffff)),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 
