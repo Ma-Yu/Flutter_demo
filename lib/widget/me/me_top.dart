@@ -9,8 +9,6 @@ class TopItem extends StatelessWidget {
   double _topBarHeight = 90;
   BuildContext _context;
 
-  static Gradient primaryGradient = const LinearGradient(colors: [Colors.blue, Colors.blueAccent]);
-
   TopItem({Key key, this.productNum = 0, this.contentWidget})
       : super(key: key);
 
@@ -28,7 +26,7 @@ class TopItem extends StatelessWidget {
           Container(
             decoration: new BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/my_bj.png"),
+                image: AssetImage("images/me/my_bj.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -49,7 +47,7 @@ class TopItem extends StatelessWidget {
                         child: IconButton(
                             color: Colors.white,
                             highlightColor: Colors.black12,
-                            icon: ImageIcon(AssetImage('images/ic_my_message.png')),
+                            icon: ImageIcon(AssetImage('images/me/ic_my_message.png')),
                             onPressed: (){
                               print('点击事件');
                             }
@@ -115,7 +113,7 @@ class TopItem extends StatelessWidget {
                               onTap: () async {
 
                               },
-                              child: Image.asset('images/ic_my_refresh.png',height: 25, width: 25),
+                              child: Image.asset('images/me/ic_my_refresh.png',height: 25, width: 25),
                             ),
                             SizedBox(
                               width: 10,

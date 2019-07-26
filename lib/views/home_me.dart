@@ -17,14 +17,14 @@ class _MyPageState extends State<MyPage>
   Gradient _mainGradient = const LinearGradient(colors: [_backgroundColor, _backgroundColor]);
 
   static List listData = [
-    {'text': '手机验证码', 'icon': 'images/ic_my_Phoneverification.png'},
-    {'text': '我的任务', 'icon': 'images/ic_my_Mytask.png'},
-    {'text': '推荐好友', 'icon': 'images/ic_my_recommended.png'},
-    {'text': '银行资料', 'icon': 'images/ic_bank_bankinformation.png'},
-    {'text': '交易记录', 'icon': 'images/ic_my_Transactionrecords.png'},
-    {'text': '版本更新', 'icon': 'images/ic_my_update.png'},
-    {'text': '清除缓存', 'icon': 'images/ic_my_garbage.png'},
-    {'text': '账户设置', 'icon': 'images/ic_my_account.png'},
+    {'text': '手机验证码', 'icon': 'images/me/ic_my_Phoneverification.png'},
+    {'text': '我的任务', 'icon': 'images/me/ic_my_Mytask.png'},
+    {'text': '推荐好友', 'icon': 'images/me/ic_my_recommended.png'},
+    {'text': '银行资料', 'icon': 'images/me/ic_bank_bankinformation.png'},
+    {'text': '交易记录', 'icon': 'images/me/ic_my_Transactionrecords.png'},
+    {'text': '版本更新', 'icon': 'images/me/ic_my_update.png'},
+    {'text': '清除缓存', 'icon': 'images/me/ic_my_garbage.png'},
+    {'text': '账户设置', 'icon': 'images/me/ic_my_account.png'},
   ];
 
   @override
@@ -174,7 +174,7 @@ class _MyPageState extends State<MyPage>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset('images/ic_my_topup.png',height: 60, width: 60),
+                  Image.asset('images/me/ic_my_topup.png',height: 60, width: 60),
                   Text(
                     '快捷充值',
                     style: TextStyle(
@@ -193,7 +193,7 @@ class _MyPageState extends State<MyPage>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset('images/ic_my_topup.png',height: 60, width: 60),
+                  Image.asset('images/me/ic_my_topup.png',height: 60, width: 60),
                   Text(
                       '申请提现',
                       style: TextStyle(
@@ -212,7 +212,7 @@ class _MyPageState extends State<MyPage>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset('images/ic_my_topup.png',height: 60, width: 60),
+                  Image.asset('images/me/ic_my_topup.png',height: 60, width: 60),
                   Text(
                       '文案文案',
                       style: TextStyle(
@@ -277,7 +277,7 @@ class _MyPageState extends State<MyPage>
                   children: <Widget>[
                     Opacity(
                       opacity: verifyOpacity,
-                      child: Image.asset('images/ic_my_Novalidation.png',height: 18, width: 50),
+                      child: Image.asset('images/me/ic_my_Novalidation.png',height: 18, width: 50),
                     ),
                     Image.asset('images/ic_wy_next.png',height: 15, width: 15),
                   ],

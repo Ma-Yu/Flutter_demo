@@ -37,7 +37,7 @@ class MyAppBar extends StatelessWidget {
                           }
                         );
                       },
-                      child: Image.asset('images/ic_home_login.png',height: 40, width: 40),
+                      child: Image.asset('images/home/ic_home_login.png',height: 40, width: 40),
                     ),
                     SizedBox(width: 10),
                     GestureDetector(
@@ -51,7 +51,7 @@ class MyAppBar extends StatelessWidget {
                             }
                         );
                       },
-                      child: Image.asset('images/ic_home_registered.png',height: 40, width: 40),
+                      child: Image.asset('images/home/ic_home_registered.png',height: 40, width: 40),
                     ),
                     SizedBox(
                       width: 10,

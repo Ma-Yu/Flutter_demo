@@ -46,7 +46,7 @@ class _AnimationHeadlinesWidgetState extends State<AnimationHeadlinesWidget> {
         SizedBox(
           width: 8,
         ),
-        Image.asset('images/ic_home_new.png',width: 30.0,height: 30.0),
+        Image.asset('images/home/ic_home_new.png',width: 30.0,height: 30.0),
         SizedBox(
           width: 8,
         ),
