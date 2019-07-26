@@ -161,19 +161,6 @@ class FirstPageState extends State<FirstPage> with TickerProviderStateMixin, Aut
             ),
             preferredSize: Size.fromHeight(0)
         ),
-//        AppBar(
-//          title: new Text('标题'),
-//          actions: <Widget>[
-//            new IconButton(icon: ImageIcon(AssetImage('images/ic_home_login.png'),size: 40,color: Colors.white,), onPressed: null, color: Colors.transparent,),
-//            new RaisedButton(
-//              onPressed: (){
-//                print('登录');
-//              },
-//              child: Text('登录', style: TextStyle(fontSize: 10),),
-//            )
-//          ],
-//          centerTitle: true,
-//        ),
         body: Column(
           children: <Widget>[
             MyAppBar(),

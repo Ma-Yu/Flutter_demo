@@ -3,6 +3,7 @@ import 'package:app_model/widget/pull_load/ListState.dart';
 import 'package:app_model/common/my_constants.dart';
 import 'package:app_model/widget/me/me_top.dart';
 import 'package:app_model/common/screen_util.dart';
+import 'package:app_model/views/me_accountSetting.dart';
 
 class MyPage extends StatefulWidget {
   @override
@@ -135,7 +136,20 @@ class _MyPageState extends State<MyPage>
       return Container(
         color: MyColors.mainBgColor,
         width: ScreenUtil.screenWidth,
-        child: _buildListViewWidget(index, index == 5 || index == 7 || index == 10),
+        child: GestureDetector(
+          onTap: () {
+            switch (index) {
+              case 10:
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(builder: (context) => AccountSettingPage())
+                );
+                break;
+            }
+          },
+          child: _buildListViewWidget(index, index == 5 || index == 7 || index == 10),
+        )
+
       );
     }
   }
