@@ -6,6 +6,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:app_model/widget/home/home_btnListWidget.dart';
 import 'package:app_model/widget/home/animation_headlines.dart';
 import 'package:app_model/common/my_constants.dart';
+import 'package:app_model/common/myAppBar.dart';
 
 class FirstPage extends StatefulWidget {
   @override
@@ -153,20 +154,32 @@ class FirstPageState extends State<FirstPage> with TickerProviderStateMixin, Aut
 
     return Scaffold(
         backgroundColor: MyColors.mainBgColor,
-        appBar: AppBar(
-          title: new Text('标题'),
-          actions: <Widget>[
-            new IconButton(icon: new Icon(Icons.list), onPressed: null),
-            new RaisedButton(
-              onPressed: (){
-                print('登录');
-              },
-              child: Text('登录', style: TextStyle(fontSize: 10),),
-            )
-          ],
-          centerTitle: true,
+        appBar: PreferredSize(
+            child: AppBar(
+              brightness: Brightness.dark,
+              elevation: 0,
+            ),
+            preferredSize: Size.fromHeight(0)
         ),
-        body: body
+//        AppBar(
+//          title: new Text('标题'),
+//          actions: <Widget>[
+//            new IconButton(icon: ImageIcon(AssetImage('images/ic_home_login.png'),size: 40,color: Colors.white,), onPressed: null, color: Colors.transparent,),
+//            new RaisedButton(
+//              onPressed: (){
+//                print('登录');
+//              },
+//              child: Text('登录', style: TextStyle(fontSize: 10),),
+//            )
+//          ],
+//          centerTitle: true,
+//        ),
+        body: Column(
+          children: <Widget>[
+            MyAppBar(),
+            Expanded(child: body),
+          ],
+        )
     );
   }
 
