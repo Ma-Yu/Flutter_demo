@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_model/common/my_constants.dart';
 import 'package:app_model/common/screen_util.dart';
+import 'package:app_model/views/login.dart';
 
 class MyAppBar extends StatelessWidget {
   @override
@@ -28,13 +29,9 @@ class MyAppBar extends StatelessWidget {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () async {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: Text('登陆点击'),
-                            );
-                          }
+                        Navigator.push(
+                            context,
+                            new MaterialPageRoute(builder: (context) => LoginPage())
                         );
                       },
                       child: Image.asset('images/home/ic_home_login.png',height: 40, width: 40),
