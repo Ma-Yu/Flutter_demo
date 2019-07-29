@@ -19,9 +19,9 @@ class _MyHomePageState extends State<AppPage>
   List<Widget> _list = List();
   int _currentIndex = 0;
   static List tabData = [
-    {'text': '首页', 'icon': Icon(Icons.home)},
-    {'text': '充值', 'icon': Icon(Icons.payment)},
-    {'text': '我的', 'icon': Icon(Icons.assignment_ind)},
+    {'text': '首页', 'icon': 'images/menu_home_uncheck.png', 'selectedIcon': 'images/menu_home_selected.png'},
+    {'text': '充值', 'icon': 'images/menu_my_uncheck.png', 'selectedIcon': 'images/menu_my_selected.png'},
+    {'text': '我的', 'icon': 'images/menu_topup_uncheck.png', 'selectedIcon': 'images/menu_topup_selected.png'},
   ];
 
   List<BottomNavigationBarItem> _myTabs = [];
@@ -31,7 +31,8 @@ class _MyHomePageState extends State<AppPage>
     super.initState();
     for (int i = 0; i < tabData.length; i++) {
       _myTabs.add(BottomNavigationBarItem(
-        icon: tabData[i]['icon'],
+        icon: Image.asset(tabData[i]['icon'], height: 24, width: 24),
+        activeIcon: Image.asset(tabData[i]['selectedIcon'], height: 24, width: 24),
         title: Text(
           tabData[i]['text'],
         ),
@@ -47,22 +48,6 @@ class _MyHomePageState extends State<AppPage>
   void dispose() {
     super.dispose();
   }
-
-//  renderAppBar(BuildContext context, Widget widget, int index) {
-//
-//    return AppBar(
-//      title: new Text(appBarTitle),
-//      actions: <Widget>[
-//        new IconButton(icon: new Icon(Icons.list), onPressed: null),
-//        new RaisedButton(
-//          onPressed: (){
-//            print('登录');
-//          },
-//          child: Text('登录', style: TextStyle(fontSize: 10),),
-//        )
-//      ],
-//      centerTitle: true,);
-//  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +68,6 @@ class _MyHomePageState extends State<AppPage>
         //fixed：固定
         type: BottomNavigationBarType.fixed,
 
-        fixedColor: Color(ThemeColor),
       ),
     );
   }
