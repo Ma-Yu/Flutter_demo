@@ -1,13 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:app_model/common/my_constants.dart';
 import 'package:app_model/common/screen_util.dart';
+import 'package:app_model/widget/login/login_signIn.dart';
 
 class LoginPage extends StatefulWidget {
+  LoginPage({Key key}) : super(key: key);
   @override
-  LoginPageState createState() => new LoginPageState();
+  _LoginPageState createState() => new _LoginPageState();
 }
 
-class LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
+  PageController _pageController;
+  PageView _pageView;
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = new PageController();
+    _pageView = new PageView(
+      controller: _pageController,
+      children: <Widget>[
+        SignInPage(),
+        SignInPage(),
+      ],
+      onPageChanged: (index) {
+        setState(() {
+          _currentPage = index;
+        });
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +54,7 @@ class LoginPageState extends State<LoginPage> {
           child: Column(
             children: <Widget>[
               _appBar(),
-//            Expanded(child: body),
+              Expanded(child: _content()),
             ],
           ),
         )
@@ -78,6 +102,84 @@ class LoginPageState extends State<LoginPage> {
               ],
             ),
           )
+        ],
+      ),
+    );
+  }
+
+  Widget _content() {
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      //设置渐变的背景
+      decoration: new BoxDecoration(
+
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          new SizedBox(
+            height: 20,
+          ),
+          new Container(
+            width: 300,
+            height: 50,
+//            color: MyColors.themeColor,
+            child: new Row(
+              children: <Widget>[
+
+                Expanded(
+                    child: new Container(
+                      width: 90,
+                      decoration: _currentPage == 0
+                          ? BoxDecoration(
+                        border: Border(bottom: BorderSide(color: Colors.white, width: 4)),
+                      )
+                          : null,
+                      child: new Center(
+                        child: new FlatButton(
+                          onPressed: () {
+                            _pageController.animateToPage(0,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.decelerate);
+                          },
+                          child: new Text(
+                            "快速登录",
+                            style: TextStyle(fontSize: 18, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    )),
+                new SizedBox(
+                  width: 40,
+                ),
+                Expanded(
+                    child: new Container(
+                      decoration: _currentPage == 1
+                          ? BoxDecoration(
+                        border: Border(bottom: BorderSide(color: Colors.white, width: 4)),
+
+                      )
+                          : null,
+                      child: new Center(
+                        child: new FlatButton(
+                          onPressed: () {
+                            _pageController.animateToPage(1,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.decelerate);
+                          },
+                          child: new Text(
+                            "动态码登录",
+                            style: TextStyle(fontSize: 18, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    )),
+              ],
+            ),
+          ),
+
+          new Expanded(child: _pageView),
         ],
       ),
     );
