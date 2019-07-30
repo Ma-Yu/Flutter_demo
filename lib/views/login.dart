@@ -42,22 +42,31 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             ),
             preferredSize: Size.fromHeight(0)
         ),
-        body: Container(
-          decoration: new BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("images/login/login_bj.png"),
-              fit: BoxFit.cover,
+        body: GestureDetector(
+          onTap: () {
+            // 触摸收起键盘
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: SingleChildScrollView (
+            child: Container(
+              decoration: new BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("images/login/login_bj.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              width: ScreenUtil.screenWidth,
+              height: ScreenUtil.screenHeight - ScreenUtil.statusBarHeight,
+              child: Column(
+                children: <Widget>[
+                  _appBar(),
+                  Expanded(child: _content()),
+                ],
+              ),
             ),
           ),
-          width: ScreenUtil.screenWidth,
-          height: ScreenUtil.screenHeight,
-          child: Column(
-            children: <Widget>[
-              _appBar(),
-              Expanded(child: _content()),
-            ],
-          ),
         )
+
     );
   }
 
