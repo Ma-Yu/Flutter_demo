@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:app_model/common/my_constants.dart';
 import 'package:app_model/common/screen_util.dart';
 import 'package:app_model/widget/login/login_signIn.dart';
+import 'package:app_model/widget/login/login_dynamic.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       controller: _pageController,
       children: <Widget>[
         SignInPage(),
-        SignInPage(),
+        DynamicPage(),
       ],
       onPageChanged: (index) {
         setState(() {
