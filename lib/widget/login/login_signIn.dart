@@ -151,7 +151,7 @@ class _SignInPageState extends State<SignInPage> {
               color: Color(0xFFEBE9E9),
             ),
             Container(
-              margin: EdgeInsets.only(top: 80, left: 12, right: 12, bottom: 20),
+              margin: EdgeInsets.only(top: 80, left: 12, right: 12, bottom: 0),
               height: 50,
               width: ScreenUtil.screenWidth - 85,
               decoration: BoxDecoration(
@@ -163,6 +163,26 @@ class _SignInPageState extends State<SignInPage> {
                 onPressed: (){
 
                 },
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top:0, left: 10, right: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  FlatButton(
+                    child: Text('忘记密码', style: TextStyle(fontSize: 14, color: MyColors.themeColor)),
+                    onPressed: (){
+
+                    },
+                  ),
+                  FlatButton(
+                    child: Text('没有账号？在此注册', style: TextStyle(fontSize: 14, color: MyColors.themeColor)),
+                    onPressed: (){
+
+                    },
+                  ),
+                ],
               ),
             )
           ],
