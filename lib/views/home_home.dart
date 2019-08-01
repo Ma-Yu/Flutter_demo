@@ -7,6 +7,7 @@ import 'package:app_model/widget/home/home_btnListWidget.dart';
 import 'package:app_model/widget/home/animation_headlines.dart';
 import 'package:app_model/common/my_constants.dart';
 import 'package:app_model/common/myAppBar.dart';
+import 'package:app_model/widget/home/home_hot.dart';
 
 class FirstPage extends StatefulWidget {
   @override
@@ -146,9 +147,9 @@ class FirstPageState extends State<FirstPage> with TickerProviderStateMixin, Aut
         ];
       },
       body: TabBarView(controller: _controller, children: [
-        _buildListView("aaa:"),
-        _buildListView("bbb:"),
-        _buildListView("ccc:"),
+        HomeHotPage(),
+        HomeHotPage(),
+        HomeHotPage(),
       ])
     );
 
