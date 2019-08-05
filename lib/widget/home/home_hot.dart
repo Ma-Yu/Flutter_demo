@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_model/common/screen_util.dart';
 import 'package:app_model/common/my_constants.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class HomeHotPage extends StatefulWidget {
   @override
@@ -52,7 +53,8 @@ class HomeHotPageState extends State<HomeHotPage> with AutomaticKeepAliveClientM
     super.build(context);
     return Column(
       children: <Widget>[
-        Expanded(child: _listContent())
+//        Expanded(child: _listContent())
+        Expanded(child: _gridContent())
       ],
     );
   }
@@ -138,6 +140,42 @@ class HomeHotPageState extends State<HomeHotPage> with AutomaticKeepAliveClientM
               ],
             ),
           )
+        ],
+      ),
+    );
+  }
+
+  Widget _gridContent() {
+    return GridView.count(
+      padding: const EdgeInsets.all(8.0),
+      primary: false,
+      crossAxisCount: 2,
+      crossAxisSpacing: 0.0,
+      children: <Widget>[
+        gridItem(),
+        gridItem(),
+        gridItem(),
+        gridItem()
+      ],
+    );
+  }
+
+  Widget gridItem() {
+    double imageH = (ScreenUtil.screenWidth / 2) - (8 * 3);
+    return Container(
+      child: Column(
+        children: <Widget>[
+          CachedNetworkImage(
+            fit: BoxFit.fill,
+            height: imageH - 20,
+            width: imageH,
+            imageUrl: "https://aecpm.alicdn.com/simba/img/TB14ab1KpXXXXclXFXXSutbFXXX.jpg_q50.jpg",
+            errorWidget: (context, url, error) => new Icon(Icons.error),
+          ),
+          SizedBox(
+            height: 6,
+          ),
+          Text('文案文案文案', style: TextStyle(color: Color(0xFF4A4A4A), fontSize: 14)),
         ],
       ),
     );
