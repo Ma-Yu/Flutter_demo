@@ -4,6 +4,9 @@ import 'package:app_model/common/my_constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class HomeHotPage extends StatefulWidget {
+  final String type;
+
+  HomeHotPage({Key key, this.type}) : super(key : key);
   @override
   HomeHotPageState createState() {
     return HomeHotPageState();
@@ -51,22 +54,22 @@ class HomeHotPageState extends State<HomeHotPage> with AutomaticKeepAliveClientM
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
     return Column(
       children: <Widget>[
-//        Expanded(child: _listContent())
-        Expanded(child: _gridContent())
+        Expanded(child: _listContent())
       ],
     );
   }
 
   Widget _listContent() {
     return ListView.builder(
-      itemCount: 10,
+      itemCount: widget.type == 'video' ? 2 :10,
       itemBuilder: (context, index){
         if(index == 0) {
           return _headerView();
         } else {
-          return _listItem(index);
+        return widget.type == 'video' ? _gridContent() : _listItem(index);
         }
 
       },
@@ -146,17 +149,20 @@ class HomeHotPageState extends State<HomeHotPage> with AutomaticKeepAliveClientM
   }
 
   Widget _gridContent() {
-    return GridView.count(
-      padding: const EdgeInsets.all(8.0),
-      primary: false,
-      crossAxisCount: 2,
-      crossAxisSpacing: 0.0,
-      children: <Widget>[
-        gridItem(),
-        gridItem(),
-        gridItem(),
-        gridItem()
-      ],
+    return Container(
+      height: ScreenUtil.screenWidth,
+      child: GridView.count(
+        padding: const EdgeInsets.all(8.0),
+        primary: false,
+        crossAxisCount: 2,
+        crossAxisSpacing: 0.0,
+        children: <Widget>[
+          gridItem(),
+          gridItem(),
+          gridItem(),
+          gridItem()
+        ],
+      ),
     );
   }
 

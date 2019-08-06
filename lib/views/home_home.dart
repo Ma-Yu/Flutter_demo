@@ -147,9 +147,9 @@ class FirstPageState extends State<FirstPage> with TickerProviderStateMixin, Aut
         ];
       },
       body: TabBarView(controller: _controller, children: [
-        HomeHotPage(),
-        HomeHotPage(),
-        HomeHotPage(),
+        HomeHotPage(type: 'hot'),
+        HomeHotPage(type: 'information',),
+        HomeHotPage(type: 'video',),
       ])
     );
 
